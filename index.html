@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2596be">
+  <meta name="description" content="Bakerzin Cost & Performance Dashboard">
+  <meta property="og:title" content="Bakerzin COGS Dashboard">
+  <meta property="og:description" content="Cost & Performance Intelligence">
+  <meta property="og:type" content="website">
+  <title>Bakerzin COGS Dashboard</title>
+  <style>
+    :root{--brand:#2596be;--brand-dark:#1d789a;--accent:#c3002f;--ink:#18212d;--muted:#657386;--canvas:#f4f7f9}
+    *{box-sizing:border-box}
+    html,body{width:100%;height:100%;margin:0;overflow:hidden}
+    body{background:var(--canvas);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif}
+    .shell{position:fixed;inset:0;width:100%;height:100%;background:var(--canvas)}
+    iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;opacity:0;transition:opacity .22s ease}
+    iframe.loaded{opacity:1}
+    .loader{position:absolute;inset:0;z-index:2;display:grid;place-content:center;justify-items:center;padding:28px;text-align:center;background:linear-gradient(145deg,#fff 0,#f4f7f9 72%,#e7f3f7 100%)}
+    .loader.done{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+    .mark{display:grid;place-items:center;width:62px;height:62px;border-radius:16px;background:linear-gradient(145deg,var(--brand),var(--brand-dark));color:#fff;font-size:22px;font-weight:850;letter-spacing:-.04em;box-shadow:0 14px 34px rgba(37,150,190,.22)}
+    h1{margin:18px 0 0;font-size:clamp(20px,3vw,28px);letter-spacing:-.03em}
+    p{margin:7px 0 0;color:var(--muted);font-size:13px}
+    .track{width:min(260px,70vw);height:4px;margin-top:24px;overflow:hidden;border-radius:99px;background:#dfe6eb}
+    .track span{display:block;width:40%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--brand),#65c7e5,var(--accent));animation:loading 1.15s ease-in-out infinite}
+    .slow{display:none;max-width:420px;margin-top:22px;padding:12px 15px;border:1px solid #dfe7ec;border-radius:12px;background:rgba(255,255,255,.92);color:var(--muted);font-size:12px;line-height:1.5}
+    .slow.show{display:block}
+    .slow p{margin:0 0 7px;font-size:12px}
+    .slow a{color:var(--brand-dark);font-weight:750;text-decoration:none}
+    .slow a:hover{text-decoration:underline}
+    @keyframes loading{0%{transform:translateX(-105%)}55%{transform:translateX(110%)}100%{transform:translateX(260%)}}
+    @media(prefers-reduced-motion:reduce){iframe{transition:none}.track span{animation-duration:2.4s}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <iframe
+      id="app"
+      title="Bakerzin COGS Dashboard"
+      allow="clipboard-read; clipboard-write; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+      src="https://script.google.com/macros/s/AKfycbxflaVXmoUkF1LNAcZlYJ4K7ZntHFNnMjuyFamWTS4uBa7eibKGOYeWHYOFUQDcMbGIaQ/exec"
+    ></iframe>
+    <section class="loader" id="loader" aria-live="polite">
+      <div class="mark" aria-hidden="true">BZ</div>
+      <h1>Bakerzin Intelligence</h1>
+      <p>Menyiapkan Cost &amp; Performance Dashboard</p>
+      <div class="track" aria-hidden="true"><span></span></div>
+      <div class="slow" id="slow">
+        <p>Pemuatan lebih lama dari biasanya. Pastikan akun Google Anda memiliki akses.</p>
+        <a href="https://script.google.com/macros/s/AKfycbxflaVXmoUkF1LNAcZlYJ4K7ZntHFNnMjuyFamWTS4uBa7eibKGOYeWHYOFUQDcMbGIaQ/exec" target="_blank" rel="noopener noreferrer">Buka dashboard langsung</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(){
+      var frame=document.getElementById('app');
+      var loader=document.getElementById('loader');
+      var slow=document.getElementById('slow');
+      var timer=window.setTimeout(function(){slow.classList.add('show');},12000);
+      frame.addEventListener('load',function(){
+        window.clearTimeout(timer);
+        frame.classList.add('loaded');
+        window.setTimeout(function(){loader.classList.add('done');},220);
+      });
+    }());
+  </script>
+</body>
+</html>
